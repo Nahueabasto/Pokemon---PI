@@ -10,8 +10,6 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 
-
-
 const getPokemons = async () => {
     try {
       let apiUrl = 'https://pokeapi.co/api/v2/pokemon';
@@ -51,23 +49,48 @@ const getPokemons = async () => {
       console.log(err);
     }
   };
+
   
+
+  const getDb = async() => {
+    return await Pokemon.findAll({
+        include: Type,
+        attrubites: ['id', 'name'],
+        through: {
+            attrubites: []
+        }
+    })
+  }
+
+  const allInfo = async () => {
+    try{
+    const apiInfo = await getPokemons();
+    const dbInfo = await getDb();
+    return apiInfo.concat(dbInfo);
+  } catch (error) {
+    return error;
+  };
+}
+
   router.get('/pokemons', async (req, res, next) => {
-    try {
-      const pokemonis = await getPokemons()
-      console.log(pokemonis)
-      
-      if (pokemonis.length === 0) {
-        res.status(404).send('No se encontraron pokemones.');
-      } else {
-        console.log(pokemonis)
-        res.status(200).send(pokemonis);
-      }
-    } catch (error) {
-      next(error);
-    }
-  });
+    const {name} = req.query;
+    const allPokemon = await allInfo();
+    if(name) {
+        const byName = await allPokemon.filter(i => i.name.toLowerCase().includes(name.toLocaleLowerCase()))
+        byName.length ? 
+        res.status(200).send(byName) :
+        res.status(404).send("No hay personaje con ese nombre");
+    } else {
+        res.status(200).send(allPokemon)
+    };
+});
+ 
+
   
+
+  
+  
+
 
 
 

@@ -4,50 +4,41 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('pokemon', {
-   id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
+    id: {
+      type: DataTypes.INTEGER,
       primaryKey: true,
+      autoIncrement: true
     },
-
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     image: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    hp: {
+    life: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
     attack: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     defense: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: false
     },
     speed: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+      type: DataTypes.INTEGER
     },
     height: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+      type: DataTypes.INTEGER
     },
     weight: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    createdInDb: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: true,
-    },
-
+      type: DataTypes.INTEGER
+    }
   });
-};
+}
+  
+

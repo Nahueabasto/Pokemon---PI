@@ -15,7 +15,7 @@ describe('Pokemon routes', () => {
     console.error('Unable to connect to the database:', err);
   }));
   beforeEach(() => Pokemon.sync({ force: true })
-    .then(() => Pokemon.create(pokemon)));
+    .then(() => Pokemon.(pokemon)));
   describe('GET /pokemons', () => {
     it('should get 200', () =>
       agent.get('/pokemons').expect(200)
