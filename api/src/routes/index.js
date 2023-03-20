@@ -2,12 +2,12 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require('axios')
-const { Pokemon, Type } = require('../db')
+const { Pokemon, Type, Pokemon_Type, } = require('../db')
 const {
   
- getPokemonsAPI,
-  allInfo,
-  //getPokemonById,
+getPokemonsAPI,
+allInfo,
+//getPokemonById,
 } = require("../controllers/controllers");
 
 //const { Pokemon, Type } = require("../db");
@@ -16,7 +16,6 @@ const router = Router();
 //const getPokemon = require("./getPokemon");
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-
 
 
 router.get('/pokemons', async (req, res, next) => {
@@ -32,19 +31,6 @@ router.get('/pokemons', async (req, res, next) => {
   };
 });
 
-router.get('/:idPokemon', async (req, res) => {
-  try {
-    const { idPokemon } = req.params;
-    const pokemon = await allInfo(idPokemon);
-    if (!pokemon) {
-      return res.status(404).json({ error: 'Pokemon not found' });
-    }
-    res.json(pokemon);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
 
 
 router.get("/pokemons/:idPokemon", async (req, res) => {
@@ -104,6 +90,7 @@ router.get("/pokemons/:idPokemon", async (req, res) => {
 //   return res.status(200).send(typeNames);
 // });
 
+
 router.get("/types", async (req, res) => {
   const pokemons = await getPokemonsAPI();
   const typesSet = new Set();
@@ -128,6 +115,97 @@ router.get("/types", async (req, res) => {
 });
 
 
+// router.post("/pokemons", async (req, res) => {
+//   const { name, image, life, attack, defense, speed, height, weight, types, } = req.body;
+//   try {
+//     const [newPoke, created] = await Pokemon.findOrCreate({
+//       where: { name, image, life, attack, defense, speed, height, weight }
+//     });
+//     if (!created) {
+//       return res.status(409).send('Este Pokemon ya existe');
+//     }
+//     const tipos = await Type.findAll({
+//       where:{
+//         name: types
+//       }
+//     })
+//     await newPoke.addTypes(tipos)
+//     res.status(201).send("Pokemon Creado")
+//   } catch(error) {
+//     console.error(error);
+//     res.status(500).send("Error en el servidor")
+//   }
+// })
+
+// router.post('/pokemons', async(req, res) => {
+//   const { name, image, life, attack, defense, speed, height, weight, types } = req.body;
+
+//   try{
+//     const newPoke = await Pokemon.create({
+//       name,
+//       image,
+//       life,
+//       attack,
+//       defense,
+//       speed,
+//       height,
+//       weight
+//     });
+
+//     const tipos = await Type.findAll({
+//       where: {
+//         name: types
+//       }
+//     })
+
+//     await newPoke.addTypes(tipos)
+
+//     res.status(201).json(newPoke);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).json({ message: "Error en el servidor" });
+//   }
+// });
+
+router.post('/pokemons', async(req, res) => {
+  const { name, image, life, attack, defense, speed, height, weight, types } = req.body;
+
+  try {
+    const allPo = await allInfo();
+    const filteredPoke = allPo.find((el) => el.name === name)
+    
+    if (filteredPoke) {
+      return res.status(409).send('Esta Pokemon ya existe');
+    }
+ else{
+    const newPoke = await Pokemon.create({
+      name,
+      image,
+      life,
+      attack,
+      defense,
+      speed,
+      height,
+      weight
+    });
+    console.log("Nuevo pokemon creado:", newPoke.toJSON());
+    const tipos = await Type.findAll({
+      where: {
+        name: types
+      }
+    })
+
+    await newPoke.addTypes(tipos)
+    console.log("Tipos asociados al nuevo pokemon:", tipos.map(t => t.name));
+    res.status(201).send("Pokemon Creado")
+    return newPoke
+  }
+    
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error en el servidor" });
+  }
+});
 
 
 
