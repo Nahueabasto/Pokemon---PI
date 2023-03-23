@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons } from '../Redux/Actions';
+import { getPokemons, getTypes } from '../Redux/Actions';
 import Card from "./Card";
 
 export default function Home() {
     const dispatch = useDispatch();
     const allPokemons = useSelector((state) => state.pokemons);
     console.log(Array.isArray(allPokemons));
+    const allTypes = useSelector((state) => state.types);
 
     useEffect(() => {
         //aca uso el useEffect para que cuando se renderice la pagina se ejecute la accion
@@ -15,6 +16,7 @@ export default function Home() {
     
     useEffect(() => {
         dispatch(getPokemons());
+        dispatch(getTypes());
     }, [dispatch]);
 
     return (
@@ -37,14 +39,18 @@ export default function Home() {
             </div>
         <div>
             {allPokemons?.map((el) => {
+                 const types =
+                 el.types && el.types.map((type) => type.name).join(", "); // borrando esta linea, tambien renderiza, "ver el porque"
                 return(
+
             <div key={el.id}>
                 <Card 
                 image={el.image}
                 name={el.name}
-                types={el.types?.join(", ")}
-                id={el.id}
+                pokemonTypes={el.pokemonTypes}
+                types={el.types}
                 />
+                
             </div>
                 )
             })}

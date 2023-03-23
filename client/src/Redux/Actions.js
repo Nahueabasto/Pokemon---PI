@@ -1,5 +1,6 @@
 import axios from 'axios';
 export const GET_POKEMONS = 'GET_POKEMONS';
+export const GET_TYPES = 'GET_TYPES';
 
 export function getPokemons(){
     return async  function(dispatch){
@@ -11,3 +12,15 @@ export function getPokemons(){
         })
     }
 }
+
+export function getTypes() {
+    return async function (dispatch) {
+      try {
+        const response = await axios.get('http://localhost:3001/types');
+        const types = response.data;
+        dispatch({ type: GET_TYPES, payload: types });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }
