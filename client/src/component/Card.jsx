@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom"
+import "./Card.css"
 
-export default function Card({id, image, name, pokemonTypes, types}){
+export default function Card({uuid, image, name, pokemonTypes, types}){
     // const allTypes = types?.map((type) => type.name) || pokemonTypes?.split(",");
 
     // const typeNames = allTypes.join(", ");
+
+    //para poder renderizar los types segun vengan de la los pokemon guardados de la api, o de los creados
     const allTypes = [];
 
     if (pokemonTypes && pokemonTypes.length > 0) {
@@ -23,12 +26,12 @@ export default function Card({id, image, name, pokemonTypes, types}){
   
     return (
       <div>
-        <Link to={`/pokemons/${id}`}>
+        <Link to={`/pokemons/${uuid}`} className="card-link">
           <div>
             <img src={image} alt="IMG" />
           </div>
-          <h2>{name}</h2>
-          <h4>Tipos: {typeNames}</h4>
+          <h2 className="cardName">{name}</h2>
+          <h4 className="card-tipos">Tipos: {typeNames}</h4>
         </Link>
       </div>
     );

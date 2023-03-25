@@ -44,10 +44,6 @@ module.exports = (sequelize) => {
     weight: {
       type: DataTypes.INTEGER
     },
-    // types: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false
-    // },
     pokemonTypes: {
       type:  DataTypes.STRING,
       allowNull: true

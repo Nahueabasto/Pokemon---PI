@@ -1,6 +1,8 @@
 import axios from 'axios';
 export const GET_POKEMONS = 'GET_POKEMONS';
 export const GET_TYPES = 'GET_TYPES';
+export const GET_NAME_POKEMON = 'GET_NAME_POKEMON';
+export const FILTER_BY_API_DB = 'FILTER_BY_API_DB';
 
 export function getPokemons(){
     return async  function(dispatch){
@@ -24,3 +26,20 @@ export function getTypes() {
       }
     };
   }
+
+  export function getNamePokemon(payload){
+    return async function (dispatch){
+        var json = await axios.get(`http://localhost:3001/pokemons?name=${payload}`);
+        return dispatch({
+            type: GET_NAME_POKEMON,
+            payload: json.data,
+        })
+    }
+}
+
+export function filterByApiDb(payload) {
+  return {
+      type: FILTER_BY_API_DB,
+      payload,
+  }
+}

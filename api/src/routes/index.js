@@ -1,6 +1,3 @@
-//Luu, de esta forma como esta el codigo me hace bien el post, y solucione el problema con los types, ahora me renderiza bien los tipos que vienen de los creados y de los que venian originalmente de la api
-
-
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -13,7 +10,6 @@ allInfo,
 //getPokemonById,
 } = require("../controllers/controllers");
 
-//const { Pokemon, Type } = require("../db");
 
 const router = Router();
 //const getPokemon = require("./getPokemon");
@@ -63,45 +59,69 @@ router.get('/pokemons', async (req, res, next) => {
 
 
 
+// router.get("/pokemons/:idPokemon", async (req, res) => {
+//   const id = parseInt(req.params.idPokemon);
 
+//   if (!Number.isInteger(parseInt(id))) {
+//     return res.status(400).json("El ID proporcionado no es un número entero válido");
+//   }
 
-router.get("/pokemons/:idPokemon", async (req, res) => {
-  const id = parseInt(req.params.idPokemon);
+//   try {
+//     const pokemonDb = await Pokemon.findOne({
+//       where: {
+//         id: id,    
+//       },
+//       include: {
+//         model: Type,
+//         through:{
+//           attributes: [],
+//         },
+//         attributes: ["name"],
+//       },
+//     });
 
-  if (!Number.isInteger(parseInt(id))) {
-    return res.status(400).json("El ID proporcionado no es un número entero válido");
-  }
+//     if (pokemonDb) {
+//       return res.json(pokemonDb);
+//     } else {
+//       const pokeApi = await getPokemonsAPI();
+//       const foundPokemon = pokeApi.find((el) => el.id === id);
 
+//       if (foundPokemon) {
+//         return res.json(foundPokemon);
+//       } else {
+//         return res.status(404).json("El id no existe");
+//       }
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     return res.status(500).send("Error interno del servidor");
+//   }
+// });
+router.get("/pokemons/:uuidPokemon", async (req, res) => {
   try {
+  const { uuidPokemon } = req.params;
+
     const pokemonDb = await Pokemon.findOne({
       where: {
-        id: id,    
+        uuid: uuidPokemon,    
       },
       include: {
         model: Type,
         through:{
           attributes: [],
         },
-        attributes: ["name"],
       },
-    });
+        attributes: ["name", "image", "life", "attack", "defense", "speed", "height", "weight", "pokemonTypes" ],
 
-    if (pokemonDb) {
-      return res.json(pokemonDb);
-    } else {
-      const pokeApi = await getPokemonsAPI();
-      const foundPokemon = pokeApi.find((el) => el.id === id);
-
-      if (foundPokemon) {
-        return res.json(foundPokemon);
-      } else {
-        return res.status(404).json("El id no existe");
-      }
-    }
-  } catch (err) {
-    console.error(err);
-    return res.status(500).send("Error interno del servidor");
+  });
+  if (pokemonDb) {
+    return res.json(pokemonDb);
+  } else {
+    throw new Error("Pokemon no encontrado");
   }
+} catch (e) {
+  res.status(404).json("-");
+}
 });
 
 // router.get("/types", async (req, res) => {
@@ -146,19 +166,19 @@ router.get("/pokemons/:idPokemon", async (req, res) => {
 //     }
 
 
-    // router.get('/types', async (req, res, next) => {
-    //   try {
-    //     const allTypes = await getAllTypes();
+//     router.get('/types', async (req, res, next) => {
+//       try {
+//         const allTypes = await getAllTypes();
         
-    //     if (allTypes.length === 0) {
-    //         res.status(404).send('No se encontraron tipos');
-    //       } else {
-    //       res.status(200).send(allTypes);
-    //     }
-    //   } catch (error) {
-    //     next(error);
-    //   }
-    // });
+//         if (allTypes.length === 0) {
+//             res.status(404).send('No se encontraron tipos');
+//           } else {
+//           res.status(200).send(allTypes);
+//         }
+//       } catch (error) {
+//         next(error);
+//       }
+//     });
 
     /////////////////////////////////////////////////
 
