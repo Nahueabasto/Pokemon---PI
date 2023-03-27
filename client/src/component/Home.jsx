@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons, getTypes, filterByApiDb } from '../Redux/Actions';
+import { getPokemons, getTypes, filterByApiDb, orderBy, filterTypes } from '../Redux/Actions';
 import { Link } from 'react-router-dom';
 import Card from "./Card";
 import Pagination from './Pagination';
@@ -13,9 +13,14 @@ export default function Home() {
     console.log(Array.isArray(allPokemons));
     const allTypes = useSelector((state) => state.types);
 
-    const [, setPoke] = useState("All");
+    // const [, setOrder] = useState("All");
+    // const [, setPoke] = useState("All");
 
-    const [currentPage, setCurrentPage] = useState(1);
+const [currentPage, setCurrentPage] = useState(1);
+const [selectedApiDb, setSelectedApiDb] = useState("");
+const [selectedSort, setSelectedSort] = useState("");
+const [selectedTypes, setSelectedTypes] = useState("");
+
   const [pokemonsPerPage] = useState(12);
   const indexLastPoke = currentPage * pokemonsPerPage;
   const indexOfFirstPoke = indexLastPoke - pokemonsPerPage;
@@ -35,12 +40,35 @@ export default function Home() {
         dispatch(getTypes());
     }, [dispatch]);
 
+    function handleClick(e){
+        e.preventDefault();
+        dispatch(getPokemons());
+        setSelectedApiDb("");
+        setSelectedSort("");
+        setSelectedTypes("")
+    }
+
     function handlefilterByApiDb(e) {
         e.preventDefault();
+        setSelectedApiDb(e.target.value);
         dispatch(filterByApiDb(e.target.value));
         setCurrentPage(1);
-        setPoke(e.target.value)
     }
+
+    function handleSort(e){
+        e.preventDefault();
+        setSelectedSort(e.target.value);
+        dispatch(orderBy(e.target.value));
+        setCurrentPage(1);
+    }
+
+    function handlefilterTypes(e){
+        e.preventDefault();
+        setSelectedTypes(e.target.value);
+        dispatch(filterTypes(e.target.value));
+        setCurrentPage(1);
+    }
+    
 
     return (
         <div>
@@ -48,28 +76,40 @@ export default function Home() {
                 <Link to="/home/form">Crear Pokemons</Link>
             </div>
             <div>
+                <button onClick={(e) => handleClick(e)}>
+                Volver a cargar Pokemons
+                </button>
+            </div>
+            <div>
                 <SearchBar />
             </div>
             <div>
             <div>
-                <select onChange={(e) => handlefilterByApiDb(e)}>
+                <select value={selectedApiDb} onChange={(e) => handlefilterByApiDb(e)}>
                     <option value="all">All</option>
                     <option value="api">Api Pokemon</option>
                     <option value="created">Pokemons creados</option>
                 </select>
             </div>
             <div>
-                <select name="" id="">
-                    <option value="">asc</option>
-                    <option value="">desc</option>
-                    <option value="">A-Z</option>
-                    <option value="">Z-A</option>
-                    <option value="">Attack</option>
+                <select value={selectedSort} onChange={(e) => handleSort(e)}>
+                <option value="default">Orden</option>
+                <optgroup label='Attack'>
+                    <option value="asc">asc</option>
+                    <option value="des">desc</option>
+                    </optgroup>
+                    <optgroup label='Alphabetic'>
+                    <option value="az">A-Z</option>
+                    <option value="za">Z-A</option>
+                    </optgroup>
                 </select>
             </div>
             <div>
-                <select name="" id="">
-                <option value="">Pokemon por tipo</option>
+                <select value={selectedTypes} onChange={(e) => handlefilterTypes(e)}>
+                <option value="" disabled defaultValue> Pokemon por tipo </option>
+                {allTypes.map(types => (
+            <option key={types.id} value={types.name}>{types.name}</option>
+          ))}
                 </select>
             </div>
             </div>

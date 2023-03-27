@@ -8,6 +8,7 @@ export default function Card({uuid, image, name, pokemonTypes, types}){
     // const typeNames = allTypes.join(", ");
 
     //para poder renderizar los types segun vengan de la los pokemon guardados de la api, o de los creados
+    console.log("uuid:", uuid);
     const allTypes = [];
 
     if (pokemonTypes && pokemonTypes.length > 0) {
