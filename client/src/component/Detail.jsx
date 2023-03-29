@@ -1,57 +1,34 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-//import { useParams } from "react-router-dom";
 import { getDetail } from "../Redux/Actions";
+import "./Detail.css"
 
-export default function Detail(props){
-
-const dispatch = useDispatch();
-
+export default function PokeDetail({uuid}){
     const details = useSelector((state) => state.detail);
-    //const { uuid } = useParams();
-    const {uuid} = props.match.params;
-    console.log(uuid);
-    console.log(`Componente Detail con uuid: ${uuid}`);
+    const dispatch = useDispatch();
 
-    useEffect(() => {
+    useEffect( () => { //trae los countries de nuevo cada vez que renderiza o que hay un cambio.
         dispatch(getDetail(uuid));
-       // dispatch(getPokemons())
-    }, [dispatch, uuid]);
+    },[dispatch, uuid]);
 
-    console.log("Renderizando componente Detail");
 
-    return(
-        <div>
-      {details && (
-        <>
-          <h1> name {details.name}</h1>
-      
-        </>
-      )}
-    </div>
-    )
+   return(
+    <div class="contenedor-principal">
+  {details && (
+    <>
+      <p>Nombre: {details.name}</p>
+      <img src={details.image} alt="Not found" />
+      <p>Vida: {details.life}</p>
+      <p>Ataque: {details.attack}</p>
+      <p>Defensa: {details.defense}</p>
+      {details.speed && <p>Velocidad: {details.speed}</p>}
+      {details.height && <p>Altura: {details.height}</p>}
+      {details.weight && <p>Peso: {details.weight}</p>}
+      <p>Tipo: {details.types?.map(type => type.name).join(', ') || details.pokemonTypes?.split(',').join(', ')}</p>
+    </>
+  )}
+</div>
+)
 
 }
-
-
-// return(
-//     <div>
-//   {details && (
-//     <>
-//       <h1>{details.name}</h1>
-//       <img src={details.image} alt="Not found" />
-//       <p>ID: {details.uuid}</p>
-//       <p>Nombre: {details.name}</p>
-//       <p>Vida: {details.life}</p>
-//       <p>Ataque: {details.attack}</p>
-//       <p>Defensa: {details.defense}</p>
-//       {details.speed && <p>Velocidad: {details.speed}</p>}
-//       {details.height && <p>Altura: {details.height}</p>}
-//       {details.weight && <p>Peso: {details.weight}</p>}
-//       <p>Tipo: {details.types}</p>
-//     </>
-//   )}
-// </div>
-// )
-
-// }

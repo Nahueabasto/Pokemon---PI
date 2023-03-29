@@ -25,7 +25,7 @@ const [selectedTypes, setSelectedTypes] = useState("");
   const indexLastPoke = currentPage * pokemonsPerPage;
   const indexOfFirstPoke = indexLastPoke - pokemonsPerPage;
   const currentPokemons = allPokemons.slice(indexOfFirstPoke, indexLastPoke);
-
+  console.log(currentPokemons); // Agrega este console.log para verificar los datos de currentPokemons
   function paginate(pageNumber) {
     setCurrentPage(pageNumber);
   }
@@ -129,6 +129,7 @@ const [selectedTypes, setSelectedTypes] = useState("");
 
             <div className="card-container" key={el.uuid}>
                 <Card 
+                uuid={el.uuid}
                 image={el.image}
                 name={el.name}
                 pokemonTypes={el.pokemonTypes}

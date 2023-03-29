@@ -60,7 +60,6 @@ router.get('/pokemons', async (req, res, next) => {
 router.get("/pokemons/:uuid", async (req, res) => {
   try {
   const { uuid } = req.params;
-  console.log("UUID: ", uuid);
     const pokemonDb = await Pokemon.findOne({
       where: {
         uuid: uuid,    
@@ -71,7 +70,7 @@ router.get("/pokemons/:uuid", async (req, res) => {
           attributes: [],
         },
       },
-        attributes: ["name", "image", "life", "attack", "defense", "speed", "height", "weight", "pokemonTypes" ],
+        attributes: ["id", "name", "image", "life", "attack", "defense", "speed", "height", "weight", "pokemonTypes" ],
 
   });
   if (pokemonDb) {

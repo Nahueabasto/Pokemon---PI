@@ -1,4 +1,4 @@
-import { GET_POKEMONS, GET_TYPES, GET_NAME_POKEMON, FILTER_BY_API_DB, ORDER_BY, FILTER_TYPES, DETAILS } from "./Actions";
+import { GET_POKEMONS, GET_TYPES, GET_NAME_POKEMON, FILTER_BY_API_DB, ORDER_BY, FILTER_TYPES, GET_POKE_DETAIL, POST_POKEMON } from "./Actions";
 
 const initialState = {
     pokemons: [],
@@ -25,6 +25,15 @@ const initialState = {
             ...state,
             pokemons: action.payload,
           }
+          case GET_POKE_DETAIL:
+  return{
+    ...state,
+    detail: action.payload,
+  }
+  case POST_POKEMON:
+    return{
+      ...state,
+    }
 
           ///Luuu
         case FILTER_BY_API_DB:
@@ -132,11 +141,7 @@ case FILTER_TYPES:
     ...state,
     pokemons: pokeFilter
   };
-case DETAILS:
-  return{
-    ...state,
-    detail: action.payload,
-  }
+
 
         default:
       return state

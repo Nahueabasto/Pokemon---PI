@@ -5,7 +5,8 @@ export const GET_NAME_POKEMON = 'GET_NAME_POKEMON';
 export const FILTER_BY_API_DB = 'FILTER_BY_API_DB';
 export const ORDER_BY = 'ORDER_BY';
 export const FILTER_TYPES = 'FILTER_TYPES';
-export const DETAILS = 'DETAILS';
+export const GET_POKE_DETAIL = 'GET_POKE_DETAIL';
+export const POST_POKEMON = 'POST_POKEMON';
 
 export function getPokemons(){
     return async  function(dispatch){
@@ -62,18 +63,35 @@ export function filterTypes(payload){
 }
 
 export function getDetail(uuid){
-  console.log(`Llamando a la acción getDetail con uuid: ${uuid}`);
-  console.log("UUID en getDetail: ", uuid);
-  return async function(dispatch) {
-      try {
-          const res = await axios.get(`/pokemons/${uuid}`);
-          console.log("Datos obtenidos de la base de datos:", res.data);
-          return dispatch({
-              type: DETAILS,
-              payload: res.data
-          });
-      } catch (err) {
-          console.log(err)
-      };
-  };
-};
+  return async function(dispatch){
+    try {
+        // Validar que el uuid sea una cadena de caracteres válida
+        if (typeof uuid !== "string" || uuid.length === 0) {
+          throw new Error("El uuid debe ser una cadena de caracteres no vacía");
+        }
+
+        let pokeDetail = await axios.get(`http://localhost:3001/pokemons/${uuid}`)
+        
+        return dispatch({
+            type: 'GET_POKE_DETAIL',
+            payload: pokeDetail.data
+        });
+    } catch(e){
+        console.log(e)
+    }
+  }
+}
+
+export function postPokemon(payload){
+  return async function(dispatch){
+      try{
+      await axios.post('http://localhost:3001/pokemons', payload)
+      return dispatch({
+          type: POST_POKEMON,
+            });
+       } catch (error) {
+     alert("Post failed");
+       }
+   };
+  }
+

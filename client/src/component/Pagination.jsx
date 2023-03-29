@@ -9,15 +9,24 @@ export default function Pagination({ pokemonsPerPage, allPokemons, paginate }) {
     pageNumbers.push(i);
   }
 
+  const pagesPerRow = 30;
+  const pageRows = [];
+  for (let i = 0; i < pageNumbers.length; i += pagesPerRow) {
+    pageRows.push(pageNumbers.slice(i, i + pagesPerRow));
+  }
+
   return (
     <nav>
-      <ul className="pagination">
-        {pageNumbers.map((number) => (
-          <span key={number} className="pagination-number" onClick={() => paginate(number)}>
-            {number}
-          </span>
-        ))}
-      </ul>
+      {/* Renderiza cada fila en su propia lista no ordenada */}
+      {pageRows.map((row, index) => (
+        <ul key={index} className="pagination">
+          {row.map((number) => (
+            <span key={number} className="pagination-number" onClick={() => paginate(number)}>
+              {number}
+            </span>
+          ))}
+        </ul>
+      ))}
     </nav>
   );
 }
