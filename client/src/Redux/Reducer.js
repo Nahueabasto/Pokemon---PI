@@ -70,10 +70,12 @@ const initialState = {
             return {
               ...state,
               pokemons: state.pokemons.sort(function (a, b) {
-                if (a.name > b.name) {
+                const nameA = a.name.toLowerCase();
+                const nameB = b.name.toLowerCase();
+                if (nameA > nameB) {
                   return 1;
                 }
-                if (b.name > a.name) {
+                if (nameB > nameA) {
                   return -1;
                 }
                 return 0;
@@ -84,16 +86,19 @@ const initialState = {
             return {
               ...state,
               pokemons: state.pokemons.sort(function (a, b) {
-                if (a.name > b.name) {
+                const nameA = a.name.toLowerCase();
+                const nameB = b.name.toLowerCase();
+                if (nameA > nameB) {
                   return -1;
                 }
-                if (b.name > a.name) {
+                if (nameB > nameA) {
                   return 1;
                 }
                 return 0;
               }),
             };
           }
+          
           if (action.payload === "des") {
             return {
               ...state,
