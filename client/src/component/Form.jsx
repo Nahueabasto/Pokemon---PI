@@ -106,7 +106,7 @@ export default function Form(){
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(postPokemon(input))
-        alert("Personaje creado!")
+        alert("Personaje creado!")//Para que lo vea el usuario!.-
         setInput({
             name: '', 
             image: '',
@@ -118,7 +118,7 @@ export default function Form(){
             weight: '', 
             types: []
         });
-        history.push('/home');
+        history.push('/home'); //Redirigue a la ruta que le digo, cuando termine de hacer el post.-
     };
 
     function handleDelete(e, el) {

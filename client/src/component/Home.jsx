@@ -118,6 +118,7 @@ const [selectedTypes, setSelectedTypes] = useState("");
         pokemonsPerPage={pokemonsPerPage}
         allPokemons={allPokemons.length}
         paginate={paginate}
+        currentPage={currentPage}
       />
 
  <div className="cards-wrapper">
