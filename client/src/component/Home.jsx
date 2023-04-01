@@ -6,6 +6,7 @@ import Card from "./Card";
 import Pagination from './Pagination';
 import SearchBar from './SearchBar';
 import "./Home.css"
+//import './styles.css';
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -71,48 +72,54 @@ const [selectedTypes, setSelectedTypes] = useState("");
     
 
     return (
-        <div>
-            <div>
-                <Link to="/home/form">Crear Pokemons</Link>
-            </div>
-            <div>
-                <button onClick={(e) => handleClick(e)}>
-                Volver a cargar Pokemons
-                </button>
-            </div>
-            <div>
-                <SearchBar />
-            </div>
-            <div>
-            <div>
-                <select value={selectedApiDb} onChange={(e) => handlefilterByApiDb(e)}>
-                    <option value="all">All</option>
-                    <option value="api">Api Pokemon</option>
-                    <option value="created">Pokemons creados</option>
-                </select>
-            </div>
-            <div>
-                <select value={selectedSort} onChange={(e) => handleSort(e)}>
-                <option value="default">Orden</option>
-                <optgroup label='Attack'>
-                    <option value="asc">asc</option>
-                    <option value="des">desc</option>
-                    </optgroup>
-                    <optgroup label='Alphabetic'>
-                    <option value="az">A-Z</option>
-                    <option value="za">Z-A</option>
-                    </optgroup>
-                </select>
-            </div>
-            <div>
-                <select value={selectedTypes} onChange={(e) => handlefilterTypes(e)}>
-                <option value="" disabled defaultValue> Pokemon por tipo </option>
-                {allTypes.map(types => (
+      <div>
+     <div class="container">
+  <div class="form-container">
+    <Link to="/home/form" class="create-pokemon" >Crear Pokemons</Link>
+    <SearchBar class="search-bar" />
+  </div>
+
+  <div class="filter-container">
+    <div class="filter-group">
+      <div>
+        <select value={selectedApiDb} onChange={(e) => handlefilterByApiDb(e)}>
+          <option value="all">All</option>
+          <option value="api">Api Pokemon</option>
+          <option value="created">Pokemons creados</option>
+        </select>
+      </div>
+      <div>
+        <select value={selectedSort} onChange={(e) => handleSort(e)}>
+          <option value="default">Orden</option>
+          <optgroup label='Attack'>
+            <option value="asc">asc</option>
+            <option value="des">desc</option>
+          </optgroup>
+          <optgroup label='Alphabetic'>
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+          </optgroup>
+        </select>
+      </div>
+      <div>
+        <select value={selectedTypes} onChange={(e) => handlefilterTypes(e)}>
+          <option value="" disabled defaultValue> Pokemon por tipo </option>
+          {allTypes.map(types => (
             <option key={types.id} value={types.name}>{types.name}</option>
           ))}
-                </select>
-            </div>
-            </div>
+        </select>
+      </div>
+      <div>
+        <button onClick={(e) => handleClick(e)}>
+          Limpiar filtros
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    
 
             <Pagination
         pokemonsPerPage={pokemonsPerPage}
@@ -146,3 +153,5 @@ const [selectedTypes, setSelectedTypes] = useState("");
         </div>
     )
 }
+
+//fijate si podes encontrar el filtrado mas todo lo demas que necesitamos hacer, en el medio de la card necesitamos poner el contenido sin modificar el tamaño de la card

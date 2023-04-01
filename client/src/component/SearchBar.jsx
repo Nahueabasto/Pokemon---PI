@@ -19,7 +19,7 @@ export default function SearchBar(){
 
     return(
         <div>
-            <input type="text" placeholder="Buscar Country" 
+            <input type="text" placeholder="Buscar Pokemons" 
             onChange={e => handleInputChange(e)} />
             <button type="submit" onClick={e => handleSubmit(e)}>Buscar</button>
         </div>

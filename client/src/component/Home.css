@@ -1,8 +1,17 @@
+
+body {
+  background-image: url('../Fotos/Before\ and\ After_\ A\ Cramped\ Porch\ Becomes\ a\ Pastel\ Laundry\ Paradise.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .cards-wrapper {
     max-width: 1200px; /* ajusta este valor al ancho deseado */
     margin: 0 auto;
     text-align: center;
   }
+  
   
   .cards-container {
     display: flex;
@@ -19,7 +28,7 @@
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     width: 300px;
-    height: 450px;
+    height: 400px;
   }
 
   /* .card-container img {
@@ -30,9 +39,9 @@
   } */
   .card-container img {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
-    margin-bottom: 0px;
+    height: 250px;
+    object-fit: contain;
+    margin-bottom: 10px;
     }
 
   
@@ -47,3 +56,176 @@
     margin: 5px 0;
     text-align: center;
   }
+
+  
+
+
+  
+
+  /* .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 20px;
+  }
+  
+  .create-pokemon {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ff9f1c;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .create-pokemon:hover {
+    background-color: #ffbf69;
+  }
+  
+  .search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  .search-bar input[type="text"] {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    flex-grow: 1;
+  }
+  
+  .search-bar button {
+    background-color: #ff9f1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .search-bar button:hover {
+    background-color: #ffbf69;
+  }
+  
+  .filter-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .filter-group label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .filter-group select {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .filter-group button {
+    background-color: #ff9f1c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .filter-group button:hover {
+    background-color: #ffbf69;
+  } */
+  
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+  }
+  
+  .form-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .create-pokemon {
+    padding: 10px;
+    background-color: #05b622a1;
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  
+  .search-bar {
+    margin-left: 10px;
+  }
+  
+  .filter-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .filter-group {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    width: 170px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #ff0044;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #cc0033;
+  }
+  
