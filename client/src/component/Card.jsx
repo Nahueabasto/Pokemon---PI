@@ -1,15 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+//import { deletePokemon } from "../Redux/Actions";
 import "./Card.css"
 
 export default function Card({uuid, image, name, pokemonTypes, types}){
-    // const allTypes = types?.map((type) => type.name) || pokemonTypes?.split(",");
 
-    // const typeNames = allTypes.join(", ");
+  //const dispatch = useDispatch();
+
+  // const handleClick = (uuid) => {
+  //   dispatch(deletePokemon(uuid))
+  //   alert("Pokemon eliminado")
+  // }
+
+
 
     //para poder renderizar los types segun vengan de la los pokemon guardados de la api, o de los creados
-   
-
     console.log("uuid in Card:", uuid);
     const allTypes = [];
 
@@ -35,7 +41,9 @@ export default function Card({uuid, image, name, pokemonTypes, types}){
           </div>
           <h2 className="cardName">{name}</h2>
           <h4 className="card-tipos">Tipos: {typeNames}</h4>
-        </Link>
+          </Link>
       </div>
     );
   }
+
+  // <button className="btnDelete"  onClick={() => handleClick(uuid)} >Delete</button>

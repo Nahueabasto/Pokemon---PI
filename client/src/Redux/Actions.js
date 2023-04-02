@@ -7,6 +7,7 @@ export const ORDER_BY = 'ORDER_BY';
 export const FILTER_TYPES = 'FILTER_TYPES';
 export const GET_POKE_DETAIL = 'GET_POKE_DETAIL';
 export const POST_POKEMON = 'POST_POKEMON';
+//export const DELETE_POKEMON = 'DELETE_POKEMON';
 
 export function getPokemons(){
     return async  function(dispatch){
@@ -94,4 +95,19 @@ export function postPokemon(payload){
        }
    };
   }
+
+
+  // export function deletePokemon(uuid){
+  //   return async function(dispatch){
+  //     try{
+  //       const perro = await axios.delete(`http://localhost:3001/pokemons/${uuid}`)
+  //       return dispatch ({
+  //         type: DELETE_POKEMON,
+  //         payload: pokemon,
+  //       });
+  //     }catch(error){
+  //       alert(error)
+  //     }
+  //   };
+  // };
 

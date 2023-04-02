@@ -1,4 +1,4 @@
-import { GET_POKEMONS, GET_TYPES, GET_NAME_POKEMON, FILTER_BY_API_DB, ORDER_BY, FILTER_TYPES, GET_POKE_DETAIL, POST_POKEMON } from "./Actions";
+import { GET_POKEMONS, GET_TYPES, GET_NAME_POKEMON, FILTER_BY_API_DB, ORDER_BY, FILTER_TYPES, GET_POKE_DETAIL, POST_POKEMON, } from "./Actions";
 
 const initialState = {
     pokemons: [],
@@ -147,6 +147,11 @@ case FILTER_TYPES:
     pokemons: pokeFilter
   };
 
+  // case DELETE_POKEMON:
+  //   return{
+  //     ...state,
+  //     filtered: state.filtered.filter((e) => e.uuid !== action.payload)
+  //   }
 
         default:
       return state

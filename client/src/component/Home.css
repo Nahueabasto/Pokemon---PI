@@ -1,16 +1,17 @@
 
 body {
-  background-image: url('../Fotos/Before\ and\ After_\ A\ Cramped\ Porch\ Becomes\ a\ Pastel\ Laundry\ Paradise.png');
+  background-image: url('../Fotos/p.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
-.cards-wrapper {
-    max-width: 1200px; /* ajusta este valor al ancho deseado */
+/* .cards-wrapper {
+    max-width: 1300px; 
+    max-width: 1500px;
     margin: 0 auto;
     text-align: center;
-  }
+  } */
   
   
   .cards-container {
@@ -24,11 +25,11 @@ body {
     flex-direction: column;
     margin: 20px;
     padding: 20px;
-    border: 1px solid gray;
+    border: 1px solid rgb(85, 84, 84);
     border-radius: 10px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     width: 300px;
-    height: 400px;
+    height: 300px;
   }
 
   /* .card-container img {
@@ -40,33 +41,26 @@ body {
   .card-container img {
     width: 100%;
     height: 250px;
-    object-fit: contain;
-    margin-bottom: 10px;
+    object-fit: contain; /* para que la imagen quede adentro de card */
+    margin-bottom: 5px;
+    margin-top: -20px; /* para subir la imagen adentro de la card */
     }
 
-  
-  .card-container h3 {
-    margin: 0;
-    font-size: 20px;
-    text-align: center;
-  }
 
-
-  .card-container p {
-    margin: 5px 0;
-    text-align: center;
-  }
 
   
 
 
   
 
-  /* .container {
+   .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+   
+    background-color: rgb(129, 120, 129);
+    
   }
   
   .form-container {
@@ -82,15 +76,15 @@ body {
   .create-pokemon {
     padding: 10px;
     border-radius: 5px;
-    background-color: #ff9f1c;
+    background-color: #1d9904;
     color: white;
     text-decoration: none;
     transition: background-color 0.2s ease-in-out;
   }
   
-  .create-pokemon:hover {
-    background-color: #ffbf69;
-  }
+  /* .create-pokemon:hover {
+    background-color: #18e605;
+  } */
   
   .search-bar {
     display: flex;
@@ -109,20 +103,6 @@ body {
     flex-grow: 1;
   }
   
-  .search-bar button {
-    background-color: #ff9f1c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .search-bar button:hover {
-    background-color: #ffbf69;
-  }
-  
   .filter-container {
     display: flex;
     flex-direction: row;
@@ -139,18 +119,18 @@ body {
     margin-right: 20px;
   }
   
-  .filter-group label {
+  /* .filter-group label {
     margin-right: 10px;
     font-weight: bold;
-  }
+  } */
   
-  .filter-group select {
+  /* .filter-group select {
     padding: 10px;
     border-radius: 5px;
     border: none;
     font-size: 16px;
     cursor: pointer;
-  }
+  } */
   
   .filter-group button {
     background-color: #ff9f1c;
@@ -164,57 +144,8 @@ body {
   
   .filter-group button:hover {
     background-color: #ffbf69;
-  } */
-  
+  } 
 
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    padding: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin: 15px;
-  }
-  
-  .form-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .create-pokemon {
-    padding: 10px;
-    background-color: #05b622a1;
-    color: #fff;
-    border-radius: 5px;
-    margin-right: 10px;
-    text-decoration: none;
-  }
-  
-  .search-bar {
-    margin-left: 10px;
-  }
-  
-  .filter-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .filter-group {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-    font-size: 16px;
-    width: 170px;
-  }
-  
   button {
     padding: 10px;
     background-color: #ff0044;
@@ -227,5 +158,17 @@ body {
   
   button:hover {
     background-color: #cc0033;
+  } 
+
+  select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    width: 170px;
   }
+   
   
+
+   

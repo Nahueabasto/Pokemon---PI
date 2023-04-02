@@ -75,8 +75,8 @@ const [selectedTypes, setSelectedTypes] = useState("");
       <div>
      <div class="container">
   <div class="form-container">
+  <SearchBar class="search-bar" />
     <Link to="/home/form" class="create-pokemon" >Crear Pokemons</Link>
-    <SearchBar class="search-bar" />
   </div>
 
   <div class="filter-container">

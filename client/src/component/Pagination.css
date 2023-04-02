@@ -3,7 +3,7 @@
   }
 
   .pagination-number {
-    color: rgb(130, 130, 214);
+    color: rgb(5, 5, 8);
     font-size: 18px;
     margin: 0 5px;
     cursor: pointer;
@@ -26,7 +26,7 @@
 
 .pagination-number.active {
   background-color: #bdcddf;
-  color: rgb(130, 130, 214);
+  color: rgb(7, 7, 12);
   border-radius: 5px;
   border: 1px solid #bdcddf;
 }

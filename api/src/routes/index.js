@@ -186,5 +186,18 @@ router.post('/pokemons', async(req, res) => {
 });
 
 
+router.delete("/pokemons/:uuid", async (req, res) => {
+  const { uuid } = req.params;
+  try {
+    await Pokemon.destroy({
+      where: {uuid: uuid,} //destruye el pokemon con la id indicada.
+    });
+  return res.status(200).json("Pokemon eliminado")
+  }catch(error){
+      return res.status(400).json(error)
+  }
+});
+
+
 
 module.exports = router;
