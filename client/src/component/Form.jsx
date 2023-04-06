@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from "react-router-dom";
 import { postPokemon, getPokemons, getTypes } from "../Redux/Actions";
 import { useDispatch, useSelector } from "react-redux";
+import "./Form.css";
 
 
 function validate(input){
@@ -134,88 +135,108 @@ export default function Form(){
             <Link to='/home'>
                 <button>Volver</button>
             </Link>
-            <h1>Crear Pokemons</h1>
-            <form onSubmit={e => {handleSubmit(e)}}>
+            <div >
+            <form className="form-containerr" onSubmit={e => {handleSubmit(e)}}>
                 <div>
-                    <label className="name">Name:</label>
-                    <input type="text" value={input.name} name='name' 
+                    <label for='name' className="label">Name:</label>
+                    <input className="form__input" type="text" value={input.name} name='name' id='name'
                     onChange={e => handleChange(e)}>
                     </input>
-                    {errors.name && <p>{errors.name}</p>}
+                    <div className="error-container">
+                    {errors.name && <span class="form-error">{errors.name}</span>}
+                    </div>
                 </div>
                 <div>
-                    <label className="image">Image:</label>
-                    <input type="url" value={input.image} name='image' 
+                    <label for='image' className="label">Image:</label>
+                    <input className="form__input" type="url" value={input.image} name='image' id='image'
                     onChange={e => handleChange(e)}>
                     </input>
-                    {errors.image && <p>{errors.image}</p>}
+                    <div className="error-container">
+                    {errors.image && <span class="form-error">{errors.image}</span>}
+                    </div>
                 </div>
                 <div>
-                    <label className="life">Life:</label>
-                    <input type="number" value={input.life} name='life' 
+                    <label for='life' className="label">Life:</label>
+                    <input className="form__input" type="number" value={input.life} name='life' id='life'
                     onChange={e => handleChange(e)}>
                     </input>
-                    {errors.life && <p>{errors.life}</p>}
+                    <div className="error-container">
+                    {errors.life && <span class="form-error">{errors.life}</span>}
+                    </div>
                 </div>
                 <div>
-                    <label className="attack">Attack:</label>
-                    <input type="number" value={input.attack} name='attack' 
+                    <label for='attack' className="label">Attack:</label>
+                    <input className="form__input" type="number" value={input.attack} name='attack' id='attack'
                     onChange={e => handleChange(e)}>
                     </input>
-                    {errors.attack && <p>{errors.attack}</p>}
+                    <div className="error-container">
+                    {errors.attack && <span class="form-error">{errors.attack}</span>}
+                    </div>
                 </div>
                 <div>
-                    <label className="defense">Defense:</label>
-                    <input type="number" value={input.defense} name='defense' 
+                    <label for='defense' className="label">Defense:</label>
+                    <input className="form__input" type="number" value={input.defense} name='defense' id='defense'
                     onChange={e => handleChange(e)}>
                     </input>
-                    {errors.defense && <p>{errors.defense}</p>}
+                    <div className="error-container">
+                    {errors.defense && <span class="form-error">{errors.defense}</span>}
+                    </div>
                 </div>
                 <div>
-                    <label className="speed">Speed:</label>
-                    <input type="number" value={input.speed} name='speed' 
+                    <label for='speed' className="label">Speed:</label>
+                    <input className="form__input" type="number" value={input.speed} name='speed' id='speed' 
                     onChange={e => handleChange(e)}>
                     </input>
-                    {errors.speed && <p>{errors.speed}</p>}
+                    <div className="error-container">
+                    {errors.speed && <span class="form-error">{errors.speed}</span>}
+                    </div>
                 </div>
                 <div>
-                    <label className="height">Height:</label>
-                    <input type="number" value={input.height} name='height' 
+                    <label for='height' className="label">Height:</label>
+                    <input className="form__input" type="number" value={input.height} name='height' id='height' 
                     onChange={e => handleChange(e)}>
                     </input>
-                    {errors.height && <p>{errors.height}</p>}
+                    <div className="error-container">
+                    {errors.height && <span class="form-error">{errors.height}</span>}
+                    </div>
                 </div>
                 <div>
-                    <label className="weight">Weight:</label>
-                    <input type="number" value={input.weight} name='weight' 
+                    <label form='weight' className="label">Weight:</label>
+                    <input className="form__input" type="number" value={input.weight} name='weight' id='weight' 
                     onChange={e => handleChange(e)}>
                     </input>
-                    {errors.weight && <p>{errors.weight}</p>}
+                    <div className="error-container">
+                    {errors.weight && <span class="form-error">{errors.weight}</span>}
+                    </div>
                 </div>
                 <div>
-                    <label className="types">Types:</label>
-                    <select name='types' onChange={e => handleSelect(e)}>
+                    <label form='types' className="form__input">Types:</label>
+                    <select className='select' name='types' id='types' onChange={e => handleSelect(e)}>
                     <option value="" > Types </option>
                         {tipes.map(el => (
                             <option key={el.id} value={el.name}>{el.name}</option>
                         ))
                         }
                     </select>
-                    {errors.types && <span className="error">{errors.types}</span>}
+                    <div className="error-container">
+                    {errors.types && <span className="form-error">{errors.types}</span>}
+                    </div>
                 </div>
+
+                <div>
+                <button className='crear' type='submit'>Crear Pokemon</button>
+                </div>
+
                 <div> {input.types?.map(el => (
                   <span key={el.id}>
-                   <p> {el}</p>
+                   <div className='tp'> {el}</div>
                    <button onClick={(e) => handleDelete(e, el)}>x</button>
                   </span>
                 ))}
                     </div>
-                    <div>
-                <button type='submit'>Crear Pokemon</button>
-                </div>
-                
+               
             </form>
+            </div>
         </div>
       )
 }
-

@@ -1,0 +1,113 @@
+.form-containerr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    grid-gap: -5px; 
+    grid-column-gap: 0px;
+    grid-row-gap: -20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 500px;
+    padding: 20px;
+    background-color: #bdacac;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin-right: 20px;
+    margin-top: 0px;
+  }
+
+  
+
+ .form-containerr label {
+  display: inline-block;
+  width: 80px;
+  margin-top: -10px;
+  text-align: right;
+  font-weight: bold;
+}
+
+  .form-containerr input[type="text"],
+  .form-containerr input[type="url"],
+  .form-containerr input[type="number"]
+   {
+    width: 150px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin-top: -5px;
+  }
+
+  .select {
+    width: 150px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+
+  .form-containerr p {
+    margin: 0;
+    color: red;
+    font-size: 14px;
+  }
+
+
+
+ 
+
+  .form-containerr span button {
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .form-containerr span button:hover {
+    background-color: #dc3545;
+  }
+
+ .error-container {
+  height: 2em;  
+  margin-left: 60px; 
+  vertical-align: middle;
+  color: red;
+  font-size: 14px;
+}
+
+.tp {
+  font-family: Helvetica, sans-serif;
+  display: inline-block;
+  margin-right: 5px;
+  color: #0026ff;
+  font-size: 20px; 
+  margin-top: -1em;
+}
+
+.crear{
+    width: 50%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #037015;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    justify-self: end;
+    margin-left: auto;
+} 
+
+ 
