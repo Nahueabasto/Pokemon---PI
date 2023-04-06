@@ -39,9 +39,9 @@ export default function Card({uuid, image, name, pokemonTypes, types}){
           <div>
             <img src={image} alt="IMG" />
           </div>
-          <h2 className="cardName">{name}</h2>
-          <h4 className="card-tipos">Tipos: {typeNames}</h4>
           </Link>
+          <h2 className="cardName">{name}</h2>
+          <h4 className="card-tipos">Types: {typeNames}</h4>
       </div>
     );
   }

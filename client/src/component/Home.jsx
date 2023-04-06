@@ -76,7 +76,7 @@ const [selectedTypes, setSelectedTypes] = useState("");
      <div class="container">
   <div class="form-container">
   <SearchBar class="search-bar" />
-    <Link to="/home/form" class="create-pokemon" >Crear Pokemons</Link>
+    <Link to="/home/form" class="create-pokemon" >Create Pokemon</Link>
   </div>
 
   <div class="filter-container">
@@ -84,13 +84,13 @@ const [selectedTypes, setSelectedTypes] = useState("");
       <div>
         <select value={selectedApiDb} onChange={(e) => handlefilterByApiDb(e)}>
           <option value="all">All</option>
-          <option value="api">Api Pokemon</option>
-          <option value="created">Pokemons creados</option>
+          <option value="api">Api Pokemons</option>
+          <option value="created">Pokemons created</option>
         </select>
       </div>
       <div>
         <select value={selectedSort} onChange={(e) => handleSort(e)}>
-          <option value="default">Orden</option>
+          <option value="default">Order</option>
           <optgroup label='Attack'>
             <option value="asc">asc</option>
             <option value="des">desc</option>
@@ -103,7 +103,7 @@ const [selectedTypes, setSelectedTypes] = useState("");
       </div>
       <div>
         <select value={selectedTypes} onChange={(e) => handlefilterTypes(e)}>
-          <option value="" disabled defaultValue> Pokemon por tipo </option>
+          <option value="" disabled defaultValue> Pokemon by type </option>
           {allTypes.map(types => (
             <option key={types.id} value={types.name}>{types.name}</option>
           ))}
@@ -111,7 +111,7 @@ const [selectedTypes, setSelectedTypes] = useState("");
       </div>
       <div>
         <button onClick={(e) => handleClick(e)}>
-          Limpiar filtros
+        Clear filters
         </button>
       </div>
     </div>

@@ -133,7 +133,7 @@ export default function Form(){
       return(
         <div>
             <Link to='/home'>
-                <button>Volver</button>
+                <button>return</button>
             </Link>
             <div >
             <form className="form-containerr" onSubmit={e => {handleSubmit(e)}}>
@@ -224,7 +224,7 @@ export default function Form(){
                 </div>
 
                 <div>
-                <button className='crear' type='submit'>Crear Pokemon</button>
+                <button className='crear' type='submit'>Create Pokemon</button>
                 </div>
 
                 <div> {input.types?.map(el => (

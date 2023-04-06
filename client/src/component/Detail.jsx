@@ -21,14 +21,14 @@ export default function PokeDetail({uuid}){
         <img src={details.image} alt="Not found" />
       </div>
       <div className="detalle">
-        <p class="detalle-texto">Nombre: {details.name}</p>
-        <p class="detalle-texto">Vida: {details.life}</p>
-        <p class="detalle-texto">Ataque: {details.attack}</p>
-        <p class="detalle-texto">Defensa: {details.defense}</p>
-        {details.speed && <p class="detalle-texto">Velocidad: {details.speed}</p>}
-        {details.height && <p class="detalle-texto">Altura: {details.height}</p>}
-        {details.weight && <p class="detalle-texto">Peso: {details.weight}</p>}
-        <p class="detalle-texto">Tipos: {details.types?.map(type => type.name).join(', ') || details.pokemonTypes?.split(',').join(', ')}</p>
+        <p class="detalle-texto">Name: {details.name}</p>
+        <p class="detalle-texto">Life: {details.life}</p>
+        <p class="detalle-texto">Attack: {details.attack}</p>
+        <p class="detalle-texto">Defense: {details.defense}</p>
+        {details.speed && <p class="detalle-texto">Speed: {details.speed}</p>}
+        {details.height && <p class="detalle-texto">Height: {details.height}</p>}
+        {details.weight && <p class="detalle-texto">Weight: {details.weight}</p>}
+        <p class="detalle-texto">Types: {details.types?.map(type => type.name).join(', ') || details.pokemonTypes?.split(',').join(', ')}</p>
       </div>
     </div>
   )}

@@ -99,7 +99,7 @@ const initialState = {
             };
           }
           
-          if (action.payload === "des") {
+          if (action.payload === "asc") {
             return {
               ...state,
               pokemons: state.pokemons.sort(function (a, b) {
@@ -113,7 +113,7 @@ const initialState = {
               }),
             };
           }
-          if (action.payload === "asc") {
+          if (action.payload === "des") {
             return {
               ...state,
               pokemons: state.pokemons.sort(function (a, b) {
