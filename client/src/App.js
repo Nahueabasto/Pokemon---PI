@@ -3,7 +3,9 @@ import './App.css';
 import LandingPage from './component/LandingPage';
 import Home from './component/Home';
 import PokeDetail from './component/Detail';  
-import Form from './component/Form';   
+import Form from './component/Form';  
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3001/"; 
 
 function App() {
   return (
