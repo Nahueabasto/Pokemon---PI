@@ -9,10 +9,9 @@ export const GET_POKE_DETAIL = 'GET_POKE_DETAIL';
 export const POST_POKEMON = 'POST_POKEMON';
 //export const DELETE_POKEMON = 'DELETE_POKEMON';
 
-
 export function getPokemons(){
     return async  function(dispatch){
-        var json = await axios.get('/pokemons',{
+        var json = await axios.get('http://localhost:3001/pokemons',{
         })
         return dispatch({
             type: GET_POKEMONS,
@@ -24,7 +23,7 @@ export function getPokemons(){
 export function getTypes() {
     return async function (dispatch) {
       try {
-        const response = await axios.get('/types');
+        const response = await axios.get('http://localhost:3001/types');
         const types = response.data;
         dispatch({ type: GET_TYPES, payload: types });
       } catch (error) {
@@ -35,7 +34,7 @@ export function getTypes() {
 
   export function getNamePokemon(payload){
     return async function (dispatch){
-        var json = await axios.get(`/pokemons?name=${payload}`);
+        var json = await axios.get(`http://localhost:3001/pokemons?name=${payload}`);
         return dispatch({
             type: GET_NAME_POKEMON,
             payload: json.data,
@@ -72,7 +71,7 @@ export function getDetail(uuid){
           throw new Error("El uuid debe ser una cadena de caracteres no vacía");
         }
 
-        let pokeDetail = await axios.get(`/pokemons/${uuid}`)
+        let pokeDetail = await axios.get(`http://localhost:3001/pokemons/${uuid}`)
         
         return dispatch({
             type: 'GET_POKE_DETAIL',
@@ -87,7 +86,7 @@ export function getDetail(uuid){
 export function postPokemon(payload){
   return async function(dispatch){
       try{
-      await axios.post('/pokemons', payload)
+      await axios.post('http://localhost:3001/pokemons', payload)
       return dispatch({
           type: POST_POKEMON,
             });
@@ -111,4 +110,3 @@ export function postPokemon(payload){
   //     }
   //   };
   // };
-

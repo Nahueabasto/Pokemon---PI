@@ -3,9 +3,7 @@ import './App.css';
 import LandingPage from './component/LandingPage';
 import Home from './component/Home';
 import PokeDetail from './component/Detail';  
-import Form from './component/Form';  
-import axios from "axios";
-axios.defaults.baseURL = "https://pokemon-pi-production-f29d.up.railway.app/"; 
+import Form from './component/Form';   
 
 function App() {
   return (
